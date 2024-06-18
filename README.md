@@ -1,7 +1,3 @@
-Sure, here's the README formatted according to GitHub's markdown syntax:
-
----
-
 # My Custom Node.js Framework
 
 ## Overview
