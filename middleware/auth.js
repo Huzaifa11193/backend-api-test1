@@ -39,6 +39,30 @@ const login = async (req,res)=>{
 }
 
 
+const register = async (req,res)=>{
+    const {name,email,password} = req.body;
+    try{
+
+        const checkemail = await User.findOne({email});
+        if(checkemail){
+            return  res.status(400).json({message:"Email Already reegisted" })
+        }
+
+        const doc = new User();
+        doc.name = name;
+        doc.email = email;
+        doc.password = password;
+        await doc.save();
+
+        res.status(200).json({message:"Registered Succussfully"});
+    }catch(err){
+        res.status(400).json({message:err.message })
+    }
+
+}
+
+
+
 module.exports = {
-    login,verifyToken
+    login,verifyToken,register
 }

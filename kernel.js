@@ -5,6 +5,7 @@
     //Express
 const express = require("express");
 const app = express();
+var cors = require('cors')
 //Config of DotEnv
 require("dotenv").config();
 const usersRouter = require("./routes/usersRoute");
@@ -16,6 +17,8 @@ const dbconnect = require("./config/dbconnect");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(cors())
 
 dbconnect();
 //My Routes
